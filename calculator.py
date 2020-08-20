@@ -1,64 +1,61 @@
-# calculator
-
-print("--------Welcome to MX Calculator--------")
-print("-----Developed by (Swarup Bhagwat.)-----")
-print("-----------------V1.3-------------------")
-
-# fuctions
+# Integer calculator
 
 
+# List of functions
 def add(num1, num2):
     addition = num1 + num2
-    print("Your answer is : " ,num1, "+",num2,"=", addition)
     return addition
 
 
-
-def sub(num1,num2):
-     substraction = num1 - num2
-     print("Your answer is : " ,num1, "-",num2,"=", substraction)
-     return substraction
+def sub(num1, num2):
+     subtraction = num1 - num2
+     return subtraction
 
 
 def multi(num1, num2):
-    multiplaction = num1 * num2
-    print("Your answer is : " ,num1, "*",num2,"=",multiplaction)
-    return multiplaction
-
-def div(num1,num2):
-    devision =num1 /num2
-    print("Your answer is : " ,num1, "/",num2,"=",devision)
-    return devision
+    multiplication = num1 * num2
+    return multiplication
 
 
-# if else statment
-
-opr = input("Please select the operator :\n + - * / ")
-if opr == "+":
-
-     add(int(input("First number : ")), int(input("Second number : ")))
-
-elif opr == "-":
-    sub(int(input("First number : ")), int(input("Second number : ")))
-
-elif opr =="*":
-    multi(int(input("First number : ")), int(input("Second number : ")))
-
-elif opr =="/":
-    div(int(input("First number : ")),int(input("Second number : ")))
+def div(num1, num2):
+    division = num1 / num2
+    return division
 
 
+def main():
+    # Determine which operation to undertake
+    opr = input("Please select the operator :\n + - * / ")
+    if opr not in ["+", "-", "*", "/"]:
+        print("Invalid selection\n")
+        main()
+
+    # Ensure that only integer numbers are selected
+    try:
+        num1=int(input("First number : "))
+        num2=int(input("Second number : "))
+
+    # If a non integer is selected, throw an error message and try again
+    except ValueError:
+        print("Please select an integer\n")
+        main()
+
+    if opr == "+":
+        answer = add(num1, num2)
+
+    elif opr == "-":
+        answer = sub(num1, num2)
+
+    elif opr =="*":
+        answer = multi(num1, num2)
+
+    elif opr =="/":
+        answer = div(num1, num2)
+
+    print("Your answer is : {} {} {} = {:.2f}".format(num1, opr, num2, answer))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == "__main__":
+    print("--------Welcome to MX Calculator--------\n"
+            "-----Developed by (Swarup Bhagwat.)-----\n"
+            "-----------------V1.3-------------------\n")
+    main()
